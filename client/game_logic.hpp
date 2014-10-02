@@ -1,5 +1,5 @@
-#ifndef _AREKS_GAME_LOGIC_HPP_
-#define _AREKS_GAME_LOGIC_HPP_
+#ifndef _MUCUS_GAME_LOGIC_HPP_
+#define _MUCUS_GAME_LOGIC_HPP_
 
 # include "subsystem.hpp"
 # include "defs.hpp"

@@ -1,13 +1,13 @@
 //
 //  effect_base.hpp
-//  areks
+//  mucus
 //
 // Created by inkooboo on 9/4/12.
 //
 //
 
-#ifndef __areks__base_effect__
-#define __areks__base_effect__
+#ifndef __mucus__base_effect__
+#define __mucus__base_effect__
 
 # include "defs.hpp"
 
@@ -25,4 +25,4 @@ namespace effects
     };
 }
 
-#endif /* defined(__areks__base_effect__) */
+#endif /* defined(__mucus__base_effect__) */

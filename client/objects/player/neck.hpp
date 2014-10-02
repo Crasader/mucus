@@ -1,5 +1,5 @@
-#ifndef _AREKS_PLAYER_NECK_HPP_
-#define _AREKS_PLAYER_NECK_HPP_
+#ifndef _MUCUS_PLAYER_NECK_HPP_
+#define _MUCUS_PLAYER_NECK_HPP_
 
 #include "defs.hpp"
 #include "objects/base_object.hpp"

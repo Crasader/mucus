@@ -13,14 +13,14 @@
 void LoadingScreen::start()
 {
     m_layer = cc::CCLayer::create();
-    
+
     cc::CCLabelTTF *loading = cc::CCLabelTTF::create("Loading...", "", 32);
-    
+
     m_layer->addChild(loading);
-    
+
     cc::CCSize size = cc::CCDirector::sharedDirector()->getWinSize();
-    loading->setPosition(ccp(size.width/2, size.height/2));
-    
+    loading->setPosition(cc::Point(size.width/2, size.height/2));
+
     m_scene->addChild(m_layer);
 }
 
@@ -31,8 +31,7 @@ void LoadingScreen::stop()
 
 LoadingScreen::LoadingScreen()
 {
-    m_scene = new cc::CCScene();
-    m_scene->init();
+    m_scene = cc::CCScene::create();
 }
 
 LoadingScreen::~LoadingScreen()

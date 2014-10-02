@@ -1,4 +1,4 @@
-#include "../Classes/app_delegate.h"
+#include "../client/app_delegate.h"
 
 #include <stdlib.h>
 #include <stdio.h>

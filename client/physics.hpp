@@ -1,5 +1,5 @@
-#ifndef _AREKS_PHYSICS_HPP_
-#define _AREKS_PHYSICS_HPP_
+#ifndef _MUCUS_PHYSICS_HPP_
+#define _MUCUS_PHYSICS_HPP_
 
 # include "subsystem.hpp"
 # include "primitives.hpp"
@@ -52,7 +52,7 @@ private:
 
     ContactListener _contact_listener;
 
-    std::vector<shared_ptr<b2JointDef> > _joint_defs;
+    std::vector<std::shared_ptr<b2JointDef> > _joint_defs;
 
 	std::vector<LazyFunction> _to_exec_funcs;
 };

@@ -6,6 +6,7 @@
 //
 //
 
+#include "CCFileUtils.h"
 #include "resource_utils.hpp"
 
 namespace res
@@ -14,11 +15,11 @@ namespace res
     {
         std::string ret("pictures/");
         ret += name;
-        
+
         //TODO: for real good devices load HD resources
-        
+
         ret += ".png";
-        
+
         return ret;
     }
 
@@ -27,9 +28,9 @@ namespace res
         std::string ret(path);
 
         //TODO: for real good devices load HD resources
-        
+
         ret += ".png";
-        
+
         return ret;
     }
 
@@ -37,14 +38,14 @@ namespace res
     {
         std::string ret("animations/");
         ret += name;
-        
+
         //TODO: for real good devices load HD resources
-        
+
         ret += "/";
-        
+
         return ret;
     }
-    
+
     std::string sound_effect(const char *name)
     {
         std::string ret("sound_fx/");
@@ -69,7 +70,7 @@ namespace res
 #endif
         return ret;
     }
-    
+
     std::string level_description(const char *name)
     {
         std::string ret("levels/");
@@ -77,21 +78,21 @@ namespace res
         ret += ".json";
         return ret;
     }
-    
-    
+
+
     std::string load_file_content(const std::string &file_name)
     {
-        const char *full_path = cc::CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(file_name.c_str());
+        std::string full_path = cc::CCFileUtils::sharedFileUtils()->fullPathForFilename(file_name);
         unsigned char *data = 0;
-        unsigned long size = 0;
+        ssize_t size = 0;
         data = cc::CCFileUtils::sharedFileUtils()->getFileData(full_path, "r", &size);
-        
+
         std::string ret;
         if (data && size)
         {
             ret.assign((char *)data, size);
         }
-        
+
         return ret;
     }
 }

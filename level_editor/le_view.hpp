@@ -18,7 +18,7 @@
 #include "level_manager/tool_manager.hpp"
 #include "level_manager/tools.hpp"
 
-struct LMView : public cc::CCObject, public View
+struct LEView : public cc::CCObject, public View
 {
     virtual void start() override
     {
@@ -31,7 +31,7 @@ struct LMView : public cc::CCObject, public View
                                                                   res::picture("CloseNormal").c_str(),
                                                                   res::picture("CloseSelected").c_str(),
                                                                   this,
-                                                                  menu_selector(LMView::menuExit) );
+                                                                  menu_selector(LEView::menuExit) );
         
         pClose->setPosition( ccp(m_size.width - 27, m_size.height - 28) );
         
@@ -39,7 +39,7 @@ struct LMView : public cc::CCObject, public View
 //                                                                   res::picture("shesterenka").c_str(),
 //                                                                   res::picture("shesterenka_p").c_str(),
 //                                                                   this,
-//                                                                   menu_selector(LMView::menuTest) );
+//                                                                   menu_selector(LEView::menuTest) );
 //        
 //        pReload->setPosition( ccp(m_size.width - 27, 28) );
         
@@ -47,7 +47,7 @@ struct LMView : public cc::CCObject, public View
                                                                    res::picture("platform_tool").c_str(),
                                                                    res::picture("platform_tool").c_str(),
                                                                    this,
-                                                                   menu_selector(LMView::menuPlatformTool) );
+                                                                   menu_selector(LEView::menuPlatformTool) );
 
         platfrom_tool->setPosition( ccp(28, m_size.height - 27) );
 

@@ -1,6 +1,6 @@
 //
 //  background.cpp
-//  areks
+//  mucus
 //
 //  Created by inkooboo on 8/15/12.
 //

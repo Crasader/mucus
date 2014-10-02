@@ -1,5 +1,5 @@
-#ifndef _AREKS_PRIMITIVES_HPP_
-#define _AREKS_PRIMITIVES_HPP_
+#ifndef _MUCUS_PRIMITIVES_HPP_
+#define _MUCUS_PRIMITIVES_HPP_
 
 # include "defs.hpp"
 

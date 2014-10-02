@@ -1,6 +1,6 @@
 //
 //  logger.hpp
-//  areks
+//  mucus
 //
 //  Created by inkooboo on 9/7/12.
 //
@@ -10,8 +10,8 @@
 
 # include <sstream>
 
-#ifndef areks_logger_hpp
-#define areks_logger_hpp
+#ifndef mucus_logger_hpp
+#define mucus_logger_hpp
 
 struct LogOnDestruction
 {
@@ -50,7 +50,7 @@ struct LogOnDestruction
 };
 
 #define DEFINE_LOGGER(class_name) static const char* log_impl_class_name() { return #class_name; }
-#define log() LogOnDestruction(log_impl_class_name(), __FUNCTION__)
+#define LOG() LogOnDestruction(log_impl_class_name(), __FUNCTION__)
     
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef _AREKS_BALL_HPP_
-# define _AREKS_BALL_HPP_
+#ifndef _MUCUS_BALL_HPP_
+# define _MUCUS_BALL_HPP_
 
 # include "defs.hpp"
 

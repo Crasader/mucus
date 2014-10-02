@@ -1,13 +1,13 @@
 //
 //  enemy.h
-//  areks
+//  mucus
 //
 //  Created by inkooboo on 8/23/12.
 //
 //
 
-#ifndef __areks__enemy__
-#define __areks__enemy__
+#ifndef __mucus__enemy__
+#define __mucus__enemy__
 
 
 # include "defs.hpp"
@@ -55,4 +55,4 @@ namespace objects
 }//end namespace objects
 
 
-#endif /* defined(__areks__enemy__) */
+#endif /* defined(__mucus__enemy__) */

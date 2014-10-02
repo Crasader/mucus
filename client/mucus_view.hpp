@@ -1,13 +1,13 @@
 //
 //  arek_view.hpp
-//  areks
+//  mucus
 //
 //  Created by inkooboo on 11/22/12.
 //
 //
 
-#ifndef areks_arek_view_hpp
-#define areks_arek_view_hpp
+#ifndef mucus_arek_view_hpp
+#define mucus_arek_view_hpp
 
 #include "defs.hpp"
 #include "master.hpp"
@@ -17,11 +17,10 @@
 #include "main_menu.hpp"
 #include "player.hpp"
 #include "objects/player/body.hpp"
-
 #include "effects/flying_text.hpp"
 
 
-struct AreksView : public cc::CCObject, public View
+struct MucusView : public cc::Object, public View
 {
     virtual void start() override
     {
@@ -29,31 +28,34 @@ struct AreksView : public cc::CCObject, public View
         
         using namespace cocos2d;
         
-        cc::CCMenuItemImage *pClose = cc::CCMenuItemImage::create(
+        cc::MenuItemImage *pClose = cc::MenuItemImage::create(
                                                                   res::picture("CloseNormal").c_str(),
                                                                   res::picture("CloseSelected").c_str(),
                                                                   this,
-                                                                  menu_selector(AreksView::menuExit) );
+                                                                  menu_selector(MucusView::menuExit) );
         
         pClose->setPosition( ccp(m_size.width - 27, m_size.height - 28) );
         
-        cc::CCMenuItemImage *pReload = cc::CCMenuItemImage::create(
+        cc::MenuItemImage *pReload = cc::MenuItemImage::create(
                                                                    res::picture("shesterenka").c_str(),
                                                                    res::picture("shesterenka_p").c_str(),
                                                                    this,
-                                                                   menu_selector(AreksView::menuTest) );
+                                                                   menu_selector(MucusView::menuTest) );
         
         pReload->setPosition( ccp(m_size.width - 27, 28) );
-        
-        createGameLayerMenu(cc::CCArray::create(pClose, pReload, NULL));
+       
+        cc:Vector<MenuItem *> items;
+        items.pushBack(pClose);
+        items.pushBack(pReload); 
+        createGameLayerMenu(items);
     }
     
-    void menuExit(cc::CCObject*)
+    void menuExit(cc::Object*)
     {
         master_t::subsystem<GameLogic>().loadScene(master_t::subsystem<MainMenu>().scene());
     }
     
-    void menuTest(cc::CCObject*)
+    void menuTest(cc::Object*)
     {
         /// test sound fx. Remove it.
 #ifndef NO_SOUND

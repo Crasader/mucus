@@ -1,5 +1,5 @@
-#ifndef _AREKS_BASE_OBJECT_HPP_
-#define _AREKS_BASE_OBJECT_HPP_
+#ifndef _MUCUS_BASE_OBJECT_HPP_
+#define _MUCUS_BASE_OBJECT_HPP_
 
 #include "defs.hpp"
 #include "primitives.hpp"

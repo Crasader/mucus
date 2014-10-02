@@ -1,13 +1,13 @@
 //
 //  backoground.hpp
-//  areks
+//  mucus
 //
 //  Created by inkooboo on 8/15/12.
 //
 //
 
-#ifndef areks_backoground_hpp
-#define areks_backoground_hpp
+#ifndef mucus_backoground_hpp
+#define mucus_backoground_hpp
 
 # include "base_object.hpp"
 # include "primitives.hpp"

@@ -1,13 +1,13 @@
 //
 //  arrow.hpp
-//  areks
+//  mucus
 //
 //  Created by inkooboo on 9/5/12.
 //
 //
 
-#ifndef __areks__effects__arrow__
-#define __areks__effects__arrow__
+#ifndef __mucus__effects__arrow__
+#define __mucus__effects__arrow__
 
 # include "defs.hpp"
 # include "primitives.hpp"
@@ -40,4 +40,4 @@ namespace effects
 
 
 
-#endif /* defined(__areks__effects__arrow__) */
+#endif /* defined(__mucus__effects__arrow__) */

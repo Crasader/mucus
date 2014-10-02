@@ -1,5 +1,5 @@
-#ifndef _AREKS_OBJECT_MANAGER_HPP_
-#define _AREKS_OBJECT_MANAGER_HPP_
+#ifndef _MUCUS_OBJECT_MANAGER_HPP_
+#define _MUCUS_OBJECT_MANAGER_HPP_
 
 #include "subsystem.hpp"
 #include "objects/base_object.hpp"

@@ -1,5 +1,5 @@
-#ifndef _AREKS_PLAYER_HPP_
-#define _AREKS_PLAYER_HPP_
+#ifndef _MUCUS_PLAYER_HPP_
+#define _MUCUS_PLAYER_HPP_
 
 #include "defs.hpp"
 #include "subsystem.hpp"

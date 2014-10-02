@@ -1,5 +1,5 @@
-#ifndef _AREKS_PLAYER_BODY_HPP_
-#define _AREKS_PLAYER_BODY_HPP_
+#ifndef _MUCUS_PLAYER_BODY_HPP_
+#define _MUCUS_PLAYER_BODY_HPP_
 
 #include "defs.hpp"
 #include "primitives.hpp"

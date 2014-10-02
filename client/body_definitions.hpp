@@ -1,5 +1,5 @@
-#ifndef _AREKS_BODY_DEFINITIONS_HPP_
-#define _AREKS_BODY_DEFINITIONS_HPP_
+#ifndef _MUCUS_BODY_DEFINITIONS_HPP_
+#define _MUCUS_BODY_DEFINITIONS_HPP_
 
 #include "defs.hpp"
 

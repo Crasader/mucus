@@ -1,6 +1,6 @@
 //
 //  flying_text.cpp
-//  areks
+//  mucus
 //
 // Created by inkooboo on 9/4/12.
 //

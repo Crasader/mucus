@@ -1,5 +1,5 @@
-#ifndef _AREKS_SPLASH_SCREEN_HPP_
-#define _AREKS_SPLASH_SCREEN_HPP_
+#ifndef _MUCUS_SPLASH_SCREEN_HPP_
+#define _MUCUS_SPLASH_SCREEN_HPP_
 
 # include "defs.hpp"
 # include "subsystem.hpp"

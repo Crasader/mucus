@@ -1,5 +1,5 @@
-#ifndef _AREKS_ACTION_TARGET_HPP_
-#define _AREKS_ACTION_TARGET_HPP_
+#ifndef _MUCUS_ACTION_TARGET_HPP_
+#define _MUCUS_ACTION_TARGET_HPP_
 
 #include "defs.hpp"
 

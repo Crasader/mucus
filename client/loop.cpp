@@ -16,7 +16,7 @@ Loop::Loop()
     : m_reminder(0)
 {
     using namespace cocos2d;
-    cc::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget( &m_sheduler, 0, false);
+    cc::Director::sharedDirector()->getScheduler()->scheduleUpdateForTarget( &m_sheduler, 0, false);
 }
 
 void Loop::start()
@@ -26,9 +26,9 @@ void Loop::start()
     m_sheduler.scheduleSelector(schedule_selector(Loop::update_view), this, DEFAULT_VIEW_TICK_TIME, false);
 }
 
-void Loop::stop() 
-{ 
-    m_sheduler.unscheduleAllSelectors();
+void Loop::stop()
+{
+    m_sheduler.unscheduleAll();
     m_scheduled_list.clear();
     m_reminder = 0;
 }
@@ -59,14 +59,14 @@ void Loop::update(float delta)
         master_t::subsystem<Physics>().step(DEFAULT_WORLD_TICK_TIME);
         corrected_delta -= DEFAULT_WORLD_TICK_TIME;
     }
-    
+
     m_reminder = corrected_delta; // new reminder
 
     delta -= m_reminder; // set delta to time passed in physics
-    
+
 
     master_t::subsystem<View>().manageCameraPositionAndScale(delta); // manage dynamic scale
-    
+
 
     master_t::subsystem<ObjectManager>().update_dynamic_objects_state(delta);
     master_t::subsystem<ObjectManager>().collect_garbage_objects();
@@ -89,6 +89,6 @@ void Loop::update(float delta)
 void Loop::update_view(float dt)
 {
     master_t::subsystem<ObjectManager>().update_objects(dt);
-    
+
     master_t::subsystem<EffectManager>().update_effects(dt);
 }

@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
-set(APP_NAME MyGame)
+set(APP_NAME Mucus)
 project (${APP_NAME})
-
-
 
 include(cocos2d/build/BuildHelpers.CMakeLists.txt)
 
@@ -39,7 +37,9 @@ else()
 set(ARCH_DIR "32-bit")
 endif()
 
-file(GLOB APP_SRC Classes/*.cpp)
+
+# application sources
+file(GLOB APP_SRC client/*.cpp common/*.cpp)
 
 if( UNIX ) #assume linux
 set(GAME_SRC
@@ -55,7 +55,15 @@ endif()
 
 set(GAME_SRC ${GAME_SRC} ${APP_SRC})
 
+include_directories(${CMAKE_SOURCE_DIR}
+                    ${CMAKE_SOURCE_DIR}/client
+                    ${CMAKE_SOURCE_DIR}/common)
+
+
+
+# cocos2d
 set(COCOS2D_ROOT ${CMAKE_SOURCE_DIR}/cocos2d)
+
 if (WIN32)
 include_directories(
   ${COCOS2D_ROOT}
@@ -170,15 +178,15 @@ set_target_properties(${APP_NAME} PROPERTIES
 if ( WIN32 )
   #also copying dlls to binary directory for the executable to run
   pre_build(${APP_NAME}
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/Resources
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/Resources ${APP_BIN_DIR}/Resources
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/resources
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/resources ${APP_BIN_DIR}/resources
     COMMAND ${CMAKE_COMMAND} -E copy ${COCOS2D_ROOT}/external/win32-specific/gles/prebuilt/glew32.dll ${APP_BIN_DIR}/${CMAKE_BUILD_TYPE}
 	COMMAND ${CMAKE_COMMAND} -E copy ${COCOS2D_ROOT}/external/win32-specific/zlib/prebuilt/zlib1.dll ${APP_BIN_DIR}/${CMAKE_BUILD_TYPE}
 	)
 else()
   pre_build(${APP_NAME}
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/Resources
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/Resources ${APP_BIN_DIR}/Resources
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/resources
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/resources ${APP_BIN_DIR}/resources
     )
 
 endif()

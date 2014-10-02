@@ -1,5 +1,5 @@
-#ifndef _AREKS_VIEW_HPP_
-#define _AREKS_VIEW_HPP_
+#ifndef _MUCUS_VIEW_HPP_
+#define _MUCUS_VIEW_HPP_
 
 # include "defs.hpp"
 # include "subsystem.hpp"
@@ -15,13 +15,13 @@ public:
     View();
     ~View();
 
-    cc::CCScene * scene();
+    cc::Scene * scene();
 
-    void reload(cc::CCSize bg_size, pr::Vec2 world_size);
+    void reload(cc::Size bg_size, pr::Vec2 world_size);
     
     float pixelScale() const;
-    cc::CCPoint toScreenCoordinates(pr::Vec2 world_coord) const;
-    pr::Vec2 toWorldCoordinates(cc::CCPoint screen_coord) const;
+    cc::Point toScreenCoordinates(pr::Vec2 world_coord) const;
+    pr::Vec2 toWorldCoordinates(cc::Point screen_coord) const;
     float worldToPixel(float world_size) const;
     float pixelToScreen(float pixel_size) const;
     float screenToPixel(float screen_size) const;
@@ -35,20 +35,20 @@ public:
     
     pr::Vec2 currentCameraPosition() const;
 
-    void addSprite(cc::CCNode *sprite, int z_order = 0);
-    void removeSprite(cc::CCNode *sprite);
-    void drawSpriteHelper(cc::CCNode *sprite, pr::Vec2 position, float angle);
+    void addSprite(cc::Node *sprite, int z_order = 0);
+    void removeSprite(cc::Node *sprite);
+    void drawSpriteHelper(cc::Node *sprite, pr::Vec2 position, float angle);
 
 protected:
-    void createGameLayerMenu(cc::CCArray* pArrayOfItems);
+    void createGameLayerMenu(const cc::Vector<cc::MenuItem *> &items);
 
     void validateScale();
     void validatePosition();
     
-    cc::CCScene *m_scene;
-    cc::CCLayer *m_game_layer;
+    cc::Scene *m_scene;
+    cc::Layer *m_game_layer;
     
-    cc::CCSize m_size;
+    cc::Size m_size;
     
     float m_view_scale;
     float m_min_view_scale;

@@ -1,10 +1,8 @@
-#ifndef _AREKS_DEFS_HPP_
-#define _AREKS_DEFS_HPP_
+#ifndef _MUCUS_DEFS_HPP_
+#define _MUCUS_DEFS_HPP_
 
 # include <cocos2d.h>
 # include <Box2D/Box2D.h>
-# include "CCEGLView.h"
-# include "CCFileUtils.h"
 # include "SimpleAudioEngine.h"
 
 # include "logger.hpp"

@@ -1,5 +1,5 @@
-#ifndef _AREKS_EFFECT_MANAGER_HPP_
-#define _AREKS_EFFECT_MANAGER_HPP_
+#ifndef _MUCUS_EFFECT_MANAGER_HPP_
+#define _MUCUS_EFFECT_MANAGER_HPP_
 
 # include "subsystem.hpp"
 # include "effects/effect_base.hpp"

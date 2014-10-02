@@ -1,20 +1,18 @@
 //
 //  flying_text.hpp
-//  areks
+//  mucus
 //
 // Created by inkooboo on 9/4/12.
 //
 //
 
-#ifndef __areks__flying_text_effect__
-#define __areks__flying_text_effect__
+#ifndef __mucus__flying_text_effect__
+#define __mucus__flying_text_effect__
 
 # include "defs.hpp"
 # include "primitives.hpp"
 
 # include "effect_base.hpp"
-
-# include <label_nodes/CCLabelTTF.h>
 
 # include <memory>
 
@@ -34,4 +32,4 @@ namespace effects
     };
 }
 
-#endif /* defined(__areks__flying_text_effect__) */
+#endif /* defined(__mucus__flying_text_effect__) */

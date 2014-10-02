@@ -1,6 +1,6 @@
 //
 //  enemy.cpp
-//  areks
+//  mucus
 //
 //  Created by inkooboo on 8/23/12.
 //

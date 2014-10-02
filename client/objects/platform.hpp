@@ -1,5 +1,5 @@
-#ifndef _AREKS_OBJECT_PLATFORM_HPP_
-# define _AREKS_OBJECT_PLATFORM_HPP_
+#ifndef _MUCUS_OBJECT_PLATFORM_HPP_
+# define _MUCUS_OBJECT_PLATFORM_HPP_
 
 # include "defs.hpp"
 
