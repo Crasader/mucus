@@ -54,9 +54,8 @@ void LevelLoader::loadLevel(const char *level_name)
     LOG() << "background base picture = " << bg_name_base;
     LOG() << "background parallax picture = " << bg_name_parallax;
 
-    cc::CCSprite *bg = cc::CCSprite::create(bg_name_base.c_str());
-    cc::CCSize bg_size = bg->getContentSize();
-    bg->release();
+    cc::Sprite *bg = cc::Sprite::create(bg_name_base.c_str());
+    cc::Size bg_size = bg->getContentSize();
 
     LOG() << "load world size";
     const Json::Value &world_size_descr = description["world_size"];

@@ -1,17 +1,9 @@
-//
-//  animation.hpp
-//  mucus
-//
-//  Created by inkooboo on 8/24/12.
-//
-//
-
 #ifndef __mucus__animation__
 #define __mucus__animation__
 
 # include "defs.hpp"
-
-# include <loop.hpp>
+# include "loop.hpp"
+# include "logger.hpp"
 
 # include <json/value.h>
 
@@ -19,8 +11,9 @@
 # include <map>
 # include <functional>
 
-class Animation
-{
+class Animation {
+    DEFINE_LOGGER(Animation)
+
     typedef std::map<std::string, cc::ActionInterval *> AnimationsMap;
 public:
     Animation(const char *name);

@@ -15,8 +15,6 @@ public:
     void loadScene(cc::Scene *scene, float delay = 0);
     
 private:
-    void transitScene(cc::Scene *scene);
-    
     cc::Scene *m_current_scene;
 };
 
