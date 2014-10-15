@@ -31,7 +31,7 @@ public:
     void moveViewBy(float dx, float dy);
     void moveViewToPosition(const pr::Vec2 &position);
     
-    virtual void manageCameraPositionAndScale(float t) {}
+    void manageCameraPositionAndScale(float t);
     
     pr::Vec2 currentCameraPosition() const;
 

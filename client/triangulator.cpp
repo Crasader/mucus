@@ -8,7 +8,7 @@
 
 static const float EPSILON=0.0000000001f;
 
-float Triangulate::Area(const Vector2dVector &contour)
+float Triangulate::Area(const PointsArray &contour)
 {
 
   int n = contour.size();
@@ -49,7 +49,7 @@ bool Triangulate::InsideTriangle(float Ax, float Ay,
   return ((aCROSSbp >= 0.0f) && (bCROSScp >= 0.0f) && (cCROSSap >= 0.0f));
 };
 
-bool Triangulate::Snip(const Vector2dVector &contour,int u,int v,int w,int n,int *V)
+bool Triangulate::Snip(const PointsArray &contour,int u,int v,int w,int n,int *V)
 {
   int p;
   float Ax, Ay, Bx, By, Cx, Cy, Px, Py;
@@ -76,7 +76,7 @@ bool Triangulate::Snip(const Vector2dVector &contour,int u,int v,int w,int n,int
   return true;
 }
 
-bool Triangulate::Process(const Vector2dVector &contour,Vector2dVector &result)
+bool Triangulate::Process(const PointsArray &contour,PointsArray &result)
 {
   /* allocate and initialize list of Vertices in polygon */
 

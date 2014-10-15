@@ -21,12 +21,12 @@ namespace primitives
             , y(0)
         {}
         
-        Vec2( cc::CCSize const& s )
+        Vec2( cc::Size const& s )
             : x( pixelToWorld( s.width ) )
             , y( pixelToWorld( s.height) )
         {}
         
-        Vec2( cc::CCPoint const& s )
+        Vec2( cc::Point const& s )
             : x( pixelToWorld( s.x ) )
             , y( pixelToWorld( s.y) )
         {}
@@ -41,14 +41,14 @@ namespace primitives
             , y( y )
         {}
         
-        cc::CCSize toCCSize() const
+        cc::Size toCCSize() const
         {
-            return cc::CCSize(worldToPixel(x), worldToPixel(y));
+            return cc::Size(worldToPixel(x), worldToPixel(y));
         }
 
-        cc::CCPoint toCCPoint() const
+        cc::Point toCCPoint() const
         {
-            return cc::CCPoint(worldToPixel(x), worldToPixel(y));
+            return cc::Point(worldToPixel(x), worldToPixel(y));
         }
         
         b2Vec2 tob2Vec2() const

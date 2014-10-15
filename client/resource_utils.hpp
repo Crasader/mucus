@@ -1,13 +1,5 @@
-//
-//  resource_utils.hpp
-//  areks
-//
-//  Created by inkooboo on 8/21/12.
-//
-//
-
-#ifndef __areks__resource_utils__
-#define __areks__resource_utils__
+#ifndef __mucus__resource_utils__
+#define __mucus__resource_utils__
 
 # include "defs.hpp"
 
@@ -30,4 +22,4 @@ namespace res
     std::string load_file_content(const std::string &file_name);
 }
 
-#endif /* defined(__areks__resource_utils__) */
+#endif

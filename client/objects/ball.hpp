@@ -27,7 +27,7 @@ namespace objects
     private:
 
         BodyOwner _body;
-        cc::CCSprite* _sprite;
+        cc::Sprite* _sprite;
     };
 
 }//end namespace objects

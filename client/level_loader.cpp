@@ -1,11 +1,3 @@
-//
-//  level_manager.cpp
-//  areks
-//
-//  Created by inkooboo on 8/15/12.
-//
-//
-
 #include "level_loader.hpp"
 
 #include "view.hpp"
@@ -121,5 +113,5 @@ void LevelLoader::loadLevel(const char *level_name)
 
     LOG() << "create player avatar";
     const Json::Value &player_position = description["player_start_position"];
-	master_t::subsystem<Player>().createAvatar( pr::Vec2(player_position["x"].asFloat(), player_position["y"].asFloat()) );
+	//master_t::subsystem<Player>().createAvatar( pr::Vec2(player_position["x"].asFloat(), player_position["y"].asFloat()) );
 }

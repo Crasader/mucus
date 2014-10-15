@@ -1,16 +1,13 @@
-//
-//  resource_utils.cpp
-//  areks
-//
-//  Created by inkooboo on 8/21/12.
-//
-//
-
-#include "CCFileUtils.h"
 #include "resource_utils.hpp"
+
+#include "logger.hpp"
+
+#include <CCFileUtils.h>
 
 namespace res
 {
+    DEFINE_LOGGER(res);
+
     std::string picture(const char *name)
     {
         std::string ret("pictures/");
@@ -82,10 +79,17 @@ namespace res
 
     std::string load_file_content(const std::string &file_name)
     {
-        std::string full_path = cc::CCFileUtils::sharedFileUtils()->fullPathForFilename(file_name);
+        LOG() << "Loading resource: " << file_name;
+//        std::vector<std::string> searchPaths(1, ".");
+//        cc::FileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+//        std::vector<std::string> resolution = cc::FileUtils::sharedFileUtils()->getSearchResolutionsOrder();
+
+        std::string full_path = cc::FileUtils::sharedFileUtils()->fullPathForFilename(file_name);
         unsigned char *data = 0;
         ssize_t size = 0;
-        data = cc::CCFileUtils::sharedFileUtils()->getFileData(full_path, "r", &size);
+        data = cc::FileUtils::sharedFileUtils()->getFileData(full_path, "r", &size);
+
+        LOG() << "Resource full path is: " << full_path << " size: " << size;
 
         std::string ret;
         if (data && size)

@@ -14,8 +14,6 @@
 
 # include "effect_base.hpp"
 
-# include <label_nodes/CCLabelTTF.h>
-
 # include <memory>
 
 namespace effects

@@ -3,6 +3,8 @@
 #include "master.hpp"
 #include "resource_utils.hpp"
 #include "physics.hpp"
+#include "app_delegate.h"
+#include "effects/flying_text.hpp"
 
 #include <algorithm>
 
@@ -11,6 +13,49 @@ void View::start()
     m_game_layer = cc::Layer::create();
 
     m_scene->addChild(m_game_layer);
+
+    cc::MenuItemImage *pClose = cc::MenuItemImage::create(
+                                                      res::picture("CloseNormal").c_str(),
+                                                      res::picture("CloseSelected").c_str(),
+                                                      [](cc::Object *) {
+                                                            master_t::subsystem<AppDelegate>().end_application();
+                                                      });
+
+    pClose->setPosition( cc::Point(m_size.width - 27, m_size.height - 28) );
+
+    cc::MenuItemImage *pReload = cc::MenuItemImage::create(
+                                                       res::picture("shesterenka").c_str(),
+                                                       res::picture("shesterenka_p").c_str(),
+                                                       [this](cc::Object *) {
+                                                            /// test effects. Remove it.
+                                                            pr::Vec2 world_size = master_t::subsystem<Physics>().worldSize();
+                                                            world_size *= .5f;
+
+                                                            effects::FlyingText::create(world_size, m_game_layer, "Test Text", 14, cc::ccc3(190, 255, 190), 5.f);
+                                                            ///
+                                                       });
+
+    pReload->setPosition( cc::Point(m_size.width - 27, 28) );
+
+    cc::Vector<cc::MenuItem *> items;
+    items.pushBack(pClose);
+    items.pushBack(pReload);
+    createGameLayerMenu(items);
+}
+
+void View::manageCameraPositionAndScale(float t)
+{
+//    Player &player = master_t::subsystem<Player>();
+//
+//        if (player.isAvatarCreated())
+//        {
+//            pr::Vec2 body_postion = player.getBody()->getPosition();
+//
+//            m_cur_positon = body_postion;
+//        }
+
+    validateScale();
+    validatePosition();
 }
 
 void View::stop()
@@ -58,7 +103,7 @@ void View::reload(cc::Size bg_size, pr::Vec2 world_size)
     m_half_screen_in_world_size.x = pixelToWorld(screenToPixel(m_size.width)) / 2;;
     m_half_screen_in_world_size.y = pixelToWorld(screenToPixel(m_size.height)) / 2;
 
-    m_cur_positon = pr::Vec2(world_size.x / 2 , world_size.y / 2);
+    m_cur_positon = pr::Vec2(world_size.x / 2, world_size.y / 2);
 
 }
 

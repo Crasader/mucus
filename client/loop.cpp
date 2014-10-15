@@ -12,24 +12,22 @@ static const float DEFAULT_WORLD_TICK_TIME = 1.f/60.f;
 static const float DEFAULT_VIEW_TICK_TIME = 1.f/33.f;
 static const float BOOST_GAME_SPEED = 1.4f;
 
+using namespace std::placeholders;
+
 Loop::Loop()
     : m_reminder(0)
 {
-    using namespace cocos2d;
-    cc::Director::sharedDirector()->getScheduler()->scheduleUpdateForTarget( &m_sheduler, 0, false);
 }
 
 void Loop::start()
 {
-    using namespace cocos2d;
-    m_sheduler.scheduleUpdateForTarget(this, 0, false);
-    m_sheduler.scheduleSelector(schedule_selector(Loop::update_view), this, DEFAULT_VIEW_TICK_TIME, false);
+    cc::Director::sharedDirector()->getScheduler()->schedule(std::bind(&Loop::update_world, this, _1), this, DEFAULT_WORLD_TICK_TIME, 0, 0.f, false, "update_world");
+    cc::Director::sharedDirector()->getScheduler()->schedule(std::bind(&Loop::update_view, this, _1), this, DEFAULT_VIEW_TICK_TIME, 0, 0.f, false, "update_view");
 }
 
 void Loop::stop()
 {
-    m_sheduler.unscheduleAll();
-    m_scheduled_list.clear();
+    cc::Director::sharedDirector()->getScheduler()->unscheduleAllForTarget(this);
     m_reminder = 0;
 }
 
@@ -41,54 +39,31 @@ void Loop::reload()
 
 void Loop::schedule(LazyFunction func, float delay)
 {
-    using namespace cocos2d;
-    m_scheduled_list.push_back(std::unique_ptr<Scheduled>(new Scheduled(func, &m_sheduler)));
-    Scheduled *sch = m_scheduled_list.back().get();
-    m_sheduler.scheduleSelector( schedule_selector(Scheduled::func), sch, 0, false, 0, delay);
+    cc::Director::sharedDirector()->getScheduler()->schedule([=](float){func();}, this, 0.f, 1, delay, false, "schedule_once");
 }
 
-void Loop::update(float delta)
+void Loop::update_world(float delta)
 {
 	delta *= BOOST_GAME_SPEED; // speed up game time
 
-
     float corrected_delta = delta + m_reminder; // add reminder from previous tick
 
-    while (corrected_delta > DEFAULT_WORLD_TICK_TIME) // step physics
-    {
+    while (corrected_delta > DEFAULT_WORLD_TICK_TIME) {
         master_t::subsystem<Physics>().step(DEFAULT_WORLD_TICK_TIME);
         corrected_delta -= DEFAULT_WORLD_TICK_TIME;
     }
 
     m_reminder = corrected_delta; // new reminder
-
     delta -= m_reminder; // set delta to time passed in physics
-
 
     master_t::subsystem<View>().manageCameraPositionAndScale(delta); // manage dynamic scale
 
-
     master_t::subsystem<ObjectManager>().update_dynamic_objects_state(delta);
     master_t::subsystem<ObjectManager>().collect_garbage_objects();
-
-
-    // remove scheduled items
-    for (auto it = m_scheduled_list.begin(), end = m_scheduled_list.end(); it != end;)
-    {
-        if ((*it)->die_bitch)
-        {
-            it = m_scheduled_list.erase(it);
-        }
-        else
-        {
-            ++it;
-        }
-    }
 }
 
 void Loop::update_view(float dt)
 {
     master_t::subsystem<ObjectManager>().update_objects(dt);
-
     master_t::subsystem<EffectManager>().update_effects(dt);
 }

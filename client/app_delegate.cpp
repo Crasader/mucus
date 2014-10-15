@@ -4,17 +4,14 @@
 
 #include "object_manager.hpp"
 #include "physics.hpp"
-#include "mucus_view.hpp"
+#include "view.hpp"
 #include "loop.hpp"
 #include "action_handler.hpp"
-#include "game_logic.hpp"
 #include "level_loader.hpp"
-#include "splash_screen.hpp"
-#include "main_menu.hpp"
-#include "loading_screen.hpp"
 #include "player.hpp"
 #include "effect_manager.hpp"
 #include "resource_utils.hpp"
+#include "scene_manager.hpp"
 
 AppDelegate::AppDelegate()
 {
@@ -46,17 +43,14 @@ bool AppDelegate::applicationDidFinishLaunching()
     m_master_ptr->add_external_subsystem<cd::SimpleAudioEngine>(CocosDenshion::SimpleAudioEngine::sharedEngine());
     m_master_ptr->add_managed_subsystem<ObjectManager>();
     m_master_ptr->add_managed_subsystem<Physics>();
-    m_master_ptr->add_managed_subsystem<View, MucusView>();
+    m_master_ptr->add_managed_subsystem<View>();
     m_master_ptr->add_managed_subsystem<Loop>();
     m_master_ptr->add_managed_subsystem<LevelLoader>();
-    m_master_ptr->add_managed_subsystem<SplashScreen>();
-    m_master_ptr->add_managed_subsystem<LoadingScreen>();
-    m_master_ptr->add_managed_subsystem<MainMenu>();
     m_master_ptr->add_managed_subsystem<Player>();
 	m_master_ptr->add_managed_subsystem<ActionHandler>();
 	m_master_ptr->add_managed_subsystem<EffectManager>();
 
-    m_master_ptr->add_managed_subsystem<GameLogic>(); //should be last
+    m_master_ptr->add_managed_subsystem<SceneManager>(); //should be last
 
     // run
     m_master_ptr->start();
@@ -87,7 +81,7 @@ void AppDelegate::end_application()
 
     m_master_ptr->stop();
 
-    cc::CCDirector::sharedDirector()->end();
+    cc::Director::sharedDirector()->end();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);

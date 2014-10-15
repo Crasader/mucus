@@ -26,8 +26,8 @@ namespace objects
         
     private:
         BodyOwner _body;
-        cc::CCNode* _ground_sprite;
-		cc::CCSpriteBatchNode* _grass_sprites;
+        cc::Sprite* _ground_sprite;
+		cc::SpriteBatchNode* _grass_sprites;
 		std::vector<pr::Vec2> _grass_points;
 		std::vector<float> _grass_angles;
 		pr::Vec2 _center;

@@ -8,8 +8,6 @@
 # include <functional>
 # include <memory>
 
-#include "action_target.hpp"
-
 class ActionHandler : public subsystem_t
 {
     virtual void start() override;
@@ -22,11 +20,25 @@ public:
     void disable();
 
 private:
-    std::map<int, action::TouchPtr> m_touches;
+	struct Touch
+	{
+		Touch() : type(TARGET) { }
+
+		cc::CCPoint begin;
+		cc::CCPoint from;
+		cc::CCPoint to;
+		cc::CCPoint end;
+
+		enum Type
+		{
+			TARGET,
+			MOVE
+		} type;
+	};
+
+    std::map<int, Touch> m_touches;
 	std::vector<int> m_touches_ids;
     cc::EventListenerTouchOneByOne *_event_listener;
-
-	ActionTarget* _active_target;
 };
 
 #endif

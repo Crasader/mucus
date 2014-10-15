@@ -5,13 +5,9 @@ project (${APP_NAME})
 
 include(cocos2d/build/BuildHelpers.CMakeLists.txt)
 
-option(DEBUG_MODE "Debug or release?" ON)
-
-if(DEBUG_MODE)
-  set(CMAKE_BUILD_TYPE DEBUG)
-else(DEBUG_MODE)
-  set(CMAKE_BUILD_TYPE RELEASE)
-endif(DEBUG_MODE)
+set(CMAKE_BUILD_TYPE DEBUG)
+#set(CMAKE_BUILD_TYPE RELEASE)
+#set(CMAKE_VERBOSE_MAKEFILE ON)
 
 if (MSVC)
 	set(CMAKE_C_FLAGS_DEBUG "-DCOCOS2D_DEBUG=1")
@@ -39,7 +35,11 @@ endif()
 
 
 # application sources
-file(GLOB APP_SRC client/*.cpp common/*.cpp)
+file(GLOB APP_SRC
+    client/*.cpp
+    common/*.cpp
+    client/effects/*.cpp
+    client/objects/*.cpp)
 
 if( UNIX ) #assume linux
 set(GAME_SRC
@@ -55,10 +55,16 @@ endif()
 
 set(GAME_SRC ${GAME_SRC} ${APP_SRC})
 
+# json
+file(GLOB JSON_SRC json/*.cpp)
+
+
 include_directories(${CMAKE_SOURCE_DIR}
                     ${CMAKE_SOURCE_DIR}/client
                     ${CMAKE_SOURCE_DIR}/common)
 
+
+set(SOURCES ${GAME_SRC} ${JSON_SRC})
 
 
 # cocos2d
@@ -166,7 +172,7 @@ add_definitions(-DCC_ENABLE_BOX2D_INTEGRATION=1)
 add_subdirectory(${COCOS2D_ROOT}/cocos)
 
 
-add_executable(${APP_NAME} ${GAME_SRC})
+add_executable(${APP_NAME} ${SOURCES})
 
 target_link_libraries(${APP_NAME} cocos2d)
 
@@ -178,15 +184,15 @@ set_target_properties(${APP_NAME} PROPERTIES
 if ( WIN32 )
   #also copying dlls to binary directory for the executable to run
   pre_build(${APP_NAME}
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/resources
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/resources ${APP_BIN_DIR}/resources
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/resources ${APP_BIN_DIR}
     COMMAND ${CMAKE_COMMAND} -E copy ${COCOS2D_ROOT}/external/win32-specific/gles/prebuilt/glew32.dll ${APP_BIN_DIR}/${CMAKE_BUILD_TYPE}
 	COMMAND ${CMAKE_COMMAND} -E copy ${COCOS2D_ROOT}/external/win32-specific/zlib/prebuilt/zlib1.dll ${APP_BIN_DIR}/${CMAKE_BUILD_TYPE}
 	)
 else()
   pre_build(${APP_NAME}
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/resources
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/resources ${APP_BIN_DIR}/resources
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/resources ${APP_BIN_DIR}
     )
 
 endif()

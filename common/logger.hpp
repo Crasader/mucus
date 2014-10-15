@@ -1,11 +1,3 @@
-//
-//  logger.hpp
-//  mucus
-//
-//  Created by inkooboo on 9/7/12.
-//
-//
-
 # include "defs.hpp"
 
 # include <sstream>
@@ -41,7 +33,7 @@ struct LogOnDestruction
     {
         if (m_ss_ptr)
         {
-            CCLOG("%s", m_ss_ptr->str().c_str());
+            cc::CCLog("mucusLogger: %s", m_ss_ptr->str().c_str());
 
             delete m_ss_ptr;
         }
